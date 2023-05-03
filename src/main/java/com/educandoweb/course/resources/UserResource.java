@@ -9,12 +9,12 @@ import com.educandoweb.course.entities.User;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserResource { 
 	
 	
 	@GetMapping
 	public ResponseEntity<User> findAll(){
-		User u = new User(1L, "Maria", "Maria@gmail.com", "11199910", "12311232");
+		User u = new User(2L, "Maria", "Maria@gmail.com", "11199910", "12311232");
 		return ResponseEntity.ok().body(u);
 	}
 }
