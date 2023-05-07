@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Arrays;
 
 import com.educandoweb.course.entities.Order;
+import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,11 +32,11 @@ public class TestConfig implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 
-		Order o1 = new Order(null,Instant.parse("2019-06-20T19:53:07Z"), u1);
-		Order o2 = new Order(null,Instant.parse("2019-07-21T03:42:10Z"), u1);
-		Order o3 = new Order(null,Instant.parse("2019-07-22T15:11:22Z"), u1);
-		Order o4 = new Order(null,Instant.parse("2019-07-25T10:21:27Z"), u2);
-		Order o5 = new Order(null,Instant.parse("2019-07-20T11:11:26Z"), u2);
+		Order o1 = new Order(null,Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID,u1);
+		Order o2 = new Order(null,Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u1);
+		Order o3 = new Order(null,Instant.parse("2019-07-22T15:11:22Z"), OrderStatus.WAITING_PAYMENT,u1);
+		Order o4 = new Order(null,Instant.parse("2019-07-25T10:21:27Z"), OrderStatus.CANCELED,u2);
+		Order o5 = new Order(null,Instant.parse("2019-07-20T11:11:26Z"),OrderStatus.SHIPPED, u2);
 
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5));
 	}
